@@ -2,6 +2,7 @@ package jlwcrews.flaggameclient;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -29,6 +30,9 @@ public class Page2Controller implements Initializable{
     @FXML
     private ToggleGroup difficultyToggle;
 
+    @FXML
+    private Button startGameButton;
+
     private String difficultySelected = "";
     private ArrayList<Flag> flags;
 
@@ -51,8 +55,9 @@ public class Page2Controller implements Initializable{
         this.nameLabel.setText(userName+":");
     }
 
-    public void startGame(String difficulty){
+    public void startGame(){
         flags = new ArrayList<>();
+        FlagNetClient fnc = new FlagNetClient(difficultySelected);
 
     }
 }
