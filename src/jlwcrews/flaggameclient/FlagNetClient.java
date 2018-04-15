@@ -25,7 +25,8 @@ public class FlagNetClient {
         try{
             connectToServer();
             setupStreams();
-            whileConnected();
+            sendDifficulty();
+            getFlags();
         }catch(EOFException eof){
 
         }catch(IOException ioe){
@@ -48,13 +49,17 @@ public class FlagNetClient {
     }
 
     //send game mode and receives flags for the game
-    private void whileConnected() throws IOException{
+    private void sendDifficulty() throws IOException{
         try{
             output.writeObject(gameDifficulty);
             output.flush();
         }catch(IOException ioe){
             ioe.printStackTrace();
         }
+    }
+
+    private void getFlags(){
+        
     }
 
     //close the streams and sockets
