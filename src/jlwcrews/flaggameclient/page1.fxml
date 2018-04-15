@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jlwcrews.flaggameclient.Page1Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="600.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="titleLabel" alignment="CENTER" layoutX="108.0" layoutY="129.0" prefHeight="196.0" prefWidth="400.0" text="Welcome to the Flag Game!" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Droid Sans" size="48.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameTextField" layoutX="224.0" layoutY="382.0" prefHeight="25.0" prefWidth="189.0" promptText="Enter Name" />
+            <Label fx:id="nameLabel" layoutX="110.0" layoutY="386.0" prefHeight="17.0" prefWidth="114.0" text="What is your name?" />
+            <Button fx:id="continueButton" layoutX="274.0" layoutY="453.0" mnemonicParsing="false" onAction="#continueButtonClicked" text="Continue" />
+         </children>
+      </Pane>
+   </children>
+</GridPane>
