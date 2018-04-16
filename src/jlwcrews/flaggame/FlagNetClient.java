@@ -20,10 +20,9 @@ public class FlagNetClient {
 
     public FlagNetClient(String gameDifficulty){
         this.gameDifficulty = gameDifficulty;
-        start();
     }
 
-    private void start(){
+    public ArrayList<Flag> start(){
         try{
             connectToServer();
             setupStreams();
@@ -36,6 +35,7 @@ public class FlagNetClient {
         }finally{
             closeConnection();
         }
+        return flags;
     }
 
     //connect to flag server
@@ -63,10 +63,6 @@ public class FlagNetClient {
     private void getFlags() throws IOException{
         try{
             flags = (ArrayList<Flag>) input.readObject();
-
-            for(Flag flag: flags) {
-                System.out.println(flag.getCountry());
-            }
         }catch(IOException ioe){
             ioe.printStackTrace();
         }catch(ClassNotFoundException cnfe){
