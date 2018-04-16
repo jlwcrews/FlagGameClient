@@ -1,6 +1,8 @@
 package jlwcrews.flaggameclient;
 
-public class Flag {
+import java.io.Serializable;
+
+public class Flag implements Serializable{
 
     private int flag_id;
     private String flag;

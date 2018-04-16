@@ -30,7 +30,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="startGameButton" layoutX="262.0" layoutY="462.0" mnemonicParsing="false" text="Start Game" />
+            <Button fx:id="startGameButton" layoutX="262.0" layoutY="462.0" mnemonicParsing="false" onAction="#startGame" text="Start Game" />
          </children>
       </Pane>
    </children>

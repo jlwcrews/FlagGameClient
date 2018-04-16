@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class FlagNetClient {
     private ObjectOutputStream output;
@@ -15,6 +16,7 @@ public class FlagNetClient {
     private Socket socket;
     private String ipAddress="localhost";
     private String gameDifficulty;
+    public ArrayList<Flag> flags;
 
     public FlagNetClient(String gameDifficulty){
         this.gameDifficulty = gameDifficulty;
@@ -58,8 +60,18 @@ public class FlagNetClient {
         }
     }
 
-    private void getFlags(){
-        
+    private void getFlags() throws IOException{
+        try{
+            flags = (ArrayList<Flag>) input.readObject();
+
+            for(Flag flag: flags) {
+                System.out.println(flag.getCountry());
+            }
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }catch(ClassNotFoundException cnfe){
+            System.out.println("Class not found");
+        }
     }
 
     //close the streams and sockets
