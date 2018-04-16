@@ -1,4 +1,4 @@
-package jlwcrews.flaggameclient;
+package jlwcrews.flaggame;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Page1Controller {
 

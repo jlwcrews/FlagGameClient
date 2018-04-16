@@ -1,4 +1,4 @@
-package jlwcrews.flaggameclient;
+package jlwcrews.flaggame;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,4 @@
-package jlwcrews.flaggameclient;
+package jlwcrews.flaggame;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -6,8 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import java.io.EOFException;
-import java.io.IOException;
 
 import java.net.URL;
 import java.util.ArrayList;

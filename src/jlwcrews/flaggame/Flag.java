@@ -1,9 +1,10 @@
-package jlwcrews.flaggameclient;
+package jlwcrews.flaggame;
 
 import java.io.Serializable;
 
 public class Flag implements Serializable{
 
+    private static final long serialVersionUID = 1L;
     private int flag_id;
     private String flag;
     private String country;
