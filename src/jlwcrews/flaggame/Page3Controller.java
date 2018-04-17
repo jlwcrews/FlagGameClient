@@ -1,96 +1,162 @@
 package jlwcrews.flaggame;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.*;
 
 import java.io.*;
-import java.util.Base64;
+import java.util.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.ResourceBundle;
 
 public class Page3Controller implements Initializable{
-
-    @FXML
-    private Button oneButton;
-
-    @FXML
-    private Button threeButton;
 
     @FXML
     private ImageView imageBox;
 
     @FXML
+    private Button oneButton;
+
+    @FXML
+    private void handleOneButton(){
+        checkAnswer(oneButton.getText().toString());
+    }
+
+    @FXML
     private Button twoButton;
+
+    @FXML
+    private void handleTwoButton(){
+        checkAnswer(twoButton.getText().toString());
+    }
+
+    @FXML
+    private Button threeButton;
+
+    @FXML
+    private void handleThreeButton(){
+        checkAnswer(threeButton.getText().toString());
+    }
 
     @FXML
     private Button fourButton;
 
+    @FXML
+    private void handleFourButton(){
+        checkAnswer(fourButton.getText().toString());
+    }
+
+    @FXML
+    private Label difficultyLabel;
+
     private ArrayList<Flag> flags;
     private ArrayList<String> usedFlags;
+    private ArrayList<String> buttonNames;
     private ObjectInputStream imageStream;
     private String difficulty = null;
     private String currentCountry = null;
     private String currentFlag = null;
     private Image flagImage = null;
-    private int score_current;
-    private int score_max;
+    private int score;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        FlagNetClient fnc = new FlagNetClient(oneButton.getText());
+        difficulty = GUI.getDifficulty();
+        difficultyLabel.setText("Difficulty: " + difficulty);
+        FlagNetClient fnc = new FlagNetClient(difficulty);
         flags = fnc.start();
+        usedFlags = new ArrayList<>();
+        buttonNames = new ArrayList<>();
         playGame();
     }
-
-    public void setDifficulty(String difficulty){
-        this.oneButton.setText(difficulty);
-
-    }
-
     private void playGame() {
+        if (usedFlags.size() < flags.size()) {
+            getNextFlag();
+        }else{
+            endGame();
+        }
+    }
+    private void getNextFlag(){
         Random random = new Random();
-        usedFlags = new ArrayList<>();
-        while (usedFlags.size() < flags.size()) {
-            int r = random.nextInt(flags.size());
-            currentCountry = flags.get(r).getCountry();
-            currentFlag = flags.get(r).getFlag();
-            if (!usedFlags.contains(currentFlag)) {
-                usedFlags.add(currentCountry);
-                setButtonText(currentCountry);
-                try {
-                    flagImage = new Image(decodeToImage(currentFlag));
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
-                if (flagImage != null) {
-                    imageBox.setImage(flagImage);
-                }
-                if(checkAnswer(Button currentCountry)){
-
-                }
-
+        int r = random.nextInt(flags.size());
+        currentCountry = flags.get(r).getCountry();
+        currentFlag = flags.get(r).getFlag();
+        if(!usedFlags.contains(currentCountry)){
+            try {
+                flagImage = new Image(decodeToImage(currentFlag));
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
             }
+            if (flagImage != null) {
+                imageBox.setImage(flagImage);
+            }
+            usedFlags.add(currentCountry);
+            setButtons();
+        }else{
+            getNextFlag();
         }
     }
 
     private InputStream decodeToImage(String imageString) throws IOException{
-
         InputStream in = Base64.getDecoder().wrap(new ByteArrayInputStream(imageString.getBytes()));
         return in;
     }
 
-    private boolean checkAnswer(Button button){
-        if(button.getText().equals(currentCountry)){
-            return true;
+    private void setButtons(){
+        ArrayList<String> usedButtonNames = new ArrayList<>();
+        buttonNames.clear();
+        buttonNames.add(currentCountry);
+        while(buttonNames.size() < 4){
+            buttonNames.add(generateButtonNames());
         }
-        return false;
+        Random rng = new Random();
+        int r = rng.nextInt(4 );
+        oneButton.setText(buttonNames.get(r));
+        buttonNames.remove(r);
+        r = rng.nextInt(3);
+        twoButton.setText(buttonNames.get(r));
+        buttonNames.remove(r);
+        r = rng.nextInt(2);
+        threeButton.setText(buttonNames.get(r));
+        buttonNames.remove(r);
+        fourButton.setText(buttonNames.get(0));
+    }
+
+    private String generateButtonNames(){
+        Random rng = new Random();
+        while(true){
+            int r = rng.nextInt(4) + 1;
+            if(!buttonNames.contains(flags.get(r).getCountry())){
+                return(flags.get(r).getCountry());
+            }
+        }
+    }
+
+    private void checkAnswer(String buttonText){
+        if(buttonText.equalsIgnoreCase(currentCountry)){
+            answerAlert("Right answer!", buttonText + " was the correct answer!");
+            score++;
+        }else{
+            answerAlert("Wrong answer!", "Sorry, you chose " + buttonText + " but the correct answer was " + currentCountry);
+        }
+        playGame();
+    }
+
+    protected void answerAlert(String title, String text)
+    {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle(title);
+        alert.setContentText(text);
+        Optional<ButtonType> result = alert.showAndWait();
+
     }
 
     private void endGame(){
-
+        answerAlert("Game over", "GAME OVER");
     }
 }

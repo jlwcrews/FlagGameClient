@@ -19,12 +19,12 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <RadioButton fx:id="radioButtonEasy" layoutX="131.0" layoutY="283.0" mnemonicParsing="false" onAction="#difficultyChanged" prefHeight="17.0" prefWidth="167.0" text="Easy (Scandinavia)">
+            <RadioButton fx:id="radioButtonEasy" layoutX="131.0" layoutY="283.0" mnemonicParsing="false" onAction="#difficultyChanged" prefHeight="17.0" prefWidth="167.0" text="Easy (Nordic Countries)">
                <toggleGroup>
                   <ToggleGroup fx:id="difficultyToggle" />
                </toggleGroup></RadioButton>
             <RadioButton fx:id="radioButtonMedium" layoutX="131.0" layoutY="338.0" mnemonicParsing="false" onAction="#difficultyChanged" prefHeight="17.0" prefWidth="167.0" text="Medium (G8 countries)" toggleGroup="$difficultyToggle" />
-            <RadioButton fx:id="radioButtonHard" layoutX="131.0" layoutY="394.0" mnemonicParsing="false" onAction="#difficultyChanged" prefHeight="17.0" prefWidth="146.0" text="Hard (Europe)" toggleGroup="$difficultyToggle" />
+            <RadioButton fx:id="radioButtonHard" layoutX="131.0" layoutY="394.0" mnemonicParsing="false" onAction="#difficultyChanged" prefHeight="17.0" prefWidth="146.0" text="Hard (EU countries)" toggleGroup="$difficultyToggle" />
             <Label fx:id="nameLabel" layoutX="385.0" layoutY="165.0" prefHeight="35.0" text=":">
                <font>
                   <Font size="24.0" />

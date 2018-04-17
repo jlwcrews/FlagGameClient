@@ -12,25 +12,30 @@
    <bottom>
       <AnchorPane prefHeight="97.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="oneButton" layoutX="240.0" layoutY="18.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="twoButton" layoutX="309.0" layoutY="18.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="threeButton" layoutX="240.0" layoutY="55.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="fourButton" layoutX="309.0" layoutY="55.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="oneButton" onAction="#handleOneButton" layoutX="168.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Button" />
+            <Button fx:id="twoButton" onAction="#handleTwoButton" layoutX="302.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Button" />
+            <Button fx:id="threeButton" onAction="#handleThreeButton" layoutX="168.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Button" />
+            <Button fx:id="fourButton" onAction="#handleFourButton" layoutX="302.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Button" />
          </children>
       </AnchorPane>
    </bottom>
+   <center>
+      <ImageView fx:id="imageBox" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+   </center>
    <top>
-      <Pane prefHeight="102.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="131.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="142.0" layoutY="16.0" text="The Flag Game">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Flag Game" textAlignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font>
             </Label>
+            <Label fx:id="difficultyLabel" text="Difficulty: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
-      </Pane>
+      </VBox>
    </top>
-   <center>
-      <ImageView fx:id="imageBox" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>

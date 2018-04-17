@@ -12,8 +12,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -60,6 +65,7 @@ public class Page2Controller implements Initializable{
     }
 
     public void startGame(ActionEvent event) throws IOException{
+        GUI.setDifficulty(difficultySelected);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("page3.fxml"));
         try{
@@ -68,11 +74,12 @@ public class Page2Controller implements Initializable{
             ex.printStackTrace();
         }
         Page3Controller p3c = loader.getController();
-        p3c.setDifficulty(difficultySelected);
+        loader.getController();
         Parent p = loader.getRoot();
         Scene page3scene = new Scene(p);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(page3scene);
         stage.show();
     }
+
 }
