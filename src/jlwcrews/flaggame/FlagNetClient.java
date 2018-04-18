@@ -14,7 +14,7 @@ public class FlagNetClient {
     private ObjectInputStream input;
     private ServerSocket server;
     private Socket socket;
-    private String ipAddress="localhost";
+    private String ipAddress=GUI.getIpAddress();
     private String gameDifficulty;
     public ArrayList<Flag> flags;
 

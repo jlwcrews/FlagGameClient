@@ -1,14 +1,20 @@
 package jlwcrews.flaggame;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.*;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
+import java.beans.EventHandler;
 import java.io.*;
 import java.util.*;
 import java.net.URL;
@@ -17,6 +23,9 @@ public class Page3Controller implements Initializable{
 
     @FXML
     private ImageView imageBox;
+
+    @FXML
+    private BorderPane borderPane;
 
     @FXML
     private Button oneButton;
@@ -157,6 +166,22 @@ public class Page3Controller implements Initializable{
     }
 
     private void endGame(){
-        answerAlert("Game over", "GAME OVER");
+        GUI.setScore(score);
+        GUI.setMaxScore(flags.size());
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("page4.fxml"));
+        try{
+            loader.load();
+        } catch(IOException ex){
+            ex.printStackTrace();
+        }
+        Page4Controller p4c = loader.getController();
+        loader.getController();
+        Parent p = loader.getRoot();
+        Scene page4scene = new Scene(p);
+        Stage stage = (Stage)borderPane.getScene().getWindow();
+        stage.setScene(page4scene);
+        stage.show();
+
     }
 }

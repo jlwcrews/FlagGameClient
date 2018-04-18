@@ -12,13 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -46,6 +41,7 @@ public class Page2Controller implements Initializable{
     public ArrayList<Flag> flags;
 
     public void initialize(URL url, ResourceBundle rb){
+        this.nameLabel.setText(GUI.getUsername() + ":");
         this.radioButtonEasy.setUserData("easy");
         this.radioButtonMedium.setUserData("medium");
         this.radioButtonHard.setUserData("hard");
@@ -58,10 +54,6 @@ public class Page2Controller implements Initializable{
             difficultySelected = "medium";
         if(difficultyToggle.getSelectedToggle().equals(radioButtonHard))
             difficultySelected = "hard";
-    }
-
-    public void setNameLabel(String userName){
-        this.nameLabel.setText(userName+":");
     }
 
     public void startGame(ActionEvent event) throws IOException{

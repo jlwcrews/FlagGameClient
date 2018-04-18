@@ -8,14 +8,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jlwcrews.flaggame.Page3Controller">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jlwcrews.flaggame.Page3Controller">
    <bottom>
       <AnchorPane prefHeight="97.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="oneButton" onAction="#handleOneButton" layoutX="168.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Button" />
-            <Button fx:id="twoButton" onAction="#handleTwoButton" layoutX="302.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Button" />
-            <Button fx:id="threeButton" onAction="#handleThreeButton" layoutX="168.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Button" />
-            <Button fx:id="fourButton" onAction="#handleFourButton" layoutX="302.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Button" />
+            <Button fx:id="oneButton" layoutX="168.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOneButton" prefHeight="25.0" prefWidth="130.0" text="Button" />
+            <Button fx:id="twoButton" layoutX="302.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleTwoButton" prefHeight="25.0" prefWidth="130.0" text="Button" />
+            <Button fx:id="threeButton" layoutX="168.0" layoutY="51.0" mnemonicParsing="false" onAction="#handleThreeButton" prefHeight="25.0" prefWidth="130.0" text="Button" />
+            <Button fx:id="fourButton" layoutX="302.0" layoutY="51.0" mnemonicParsing="false" onAction="#handleFourButton" prefHeight="25.0" prefWidth="130.0" text="Button" />
          </children>
       </AnchorPane>
    </bottom>

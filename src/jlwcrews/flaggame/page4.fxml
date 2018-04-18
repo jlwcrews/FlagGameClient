@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jlwcrews.flaggame.Page4Controller">
+   <children>
+      <Pane prefHeight="199.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="174.0" layoutY="30.0" text="Game Over!">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label fx:id="scoreLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="100.0" prefHeight="27.0" prefWidth="474.0" text="Label" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <HBox alignment="CENTER" layoutX="200.0" layoutY="277.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button fx:id="playAgainButton" mnemonicParsing="false" onAction="#handlePlayAgainButton" text="Play Again?" />
+            <Button fx:id="exitGameButton" mnemonicParsing="false" onAction="#handleExitGameButton" text="Exit Game" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
