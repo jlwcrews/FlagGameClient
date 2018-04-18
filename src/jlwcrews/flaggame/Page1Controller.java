@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//controller for the first fxml page
 public class Page1Controller implements Initializable{
 
     @FXML
@@ -32,6 +33,7 @@ public class Page1Controller implements Initializable{
     @FXML
     private TextField nameTextField;
 
+    //when you press enter in the Name box, it sets focus to the IP address box
     @FXML
     private void textFieldOnEnter(){
         ipTextField.requestFocus();
@@ -45,11 +47,12 @@ public class Page1Controller implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //checks to see if you have played a previous game, and pre-fills the name and IP address
         nameTextField.setText(GUI.getUsername());
         ipTextField.setText(GUI.getIpAddress());
     }
 
-
+    //launches page 2
     public void continueButtonClicked() throws IOException{
         String userName = nameTextField.getText();
         GUI.setUsername(userName);

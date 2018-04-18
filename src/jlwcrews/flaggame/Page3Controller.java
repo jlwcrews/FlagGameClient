@@ -3,7 +3,6 @@ package jlwcrews.flaggame;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,12 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.beans.EventHandler;
 import java.io.*;
 import java.util.*;
 import java.net.URL;
 
+//controller for the game proper
 public class Page3Controller implements Initializable{
 
     @FXML
@@ -74,14 +72,18 @@ public class Page3Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //gets the difficulty set in the previous page
         difficulty = GUI.getDifficulty();
         difficultyLabel.setText("Difficulty: " + difficulty);
+        //fires up a new instance of FlagNetClient, and passes the selected difficulty
         FlagNetClient fnc = new FlagNetClient(difficulty);
+        //FlagNetClient returns an ArrayList<Flag>
         flags = fnc.start();
         usedFlags = new ArrayList<>();
         buttonNames = new ArrayList<>();
         playGame();
     }
+    //as long as there are flags the player hasn't seen yet, keep going
     private void playGame() {
         if (usedFlags.size() < flags.size()) {
             getNextFlag();
@@ -89,6 +91,10 @@ public class Page3Controller implements Initializable{
             endGame();
         }
     }
+
+    //pulls the next random flag from the flags arraylist
+    //making sure not to show duplicates
+
     private void getNextFlag(){
         Random random = new Random();
         int r = random.nextInt(flags.size());
@@ -96,6 +102,7 @@ public class Page3Controller implements Initializable{
         currentFlag = flags.get(r).getFlag();
         if(!usedFlags.contains(currentCountry)){
             try {
+                //the flags are stored as a base64 string, so need to be converted back to png files
                 flagImage = new Image(decodeToImage(currentFlag));
             } catch (IOException ioe) {
                 ioe.printStackTrace();
@@ -110,11 +117,14 @@ public class Page3Controller implements Initializable{
         }
     }
 
+    //decodes the base64 string to an image
     private InputStream decodeToImage(String imageString) throws IOException{
         InputStream in = Base64.getDecoder().wrap(new ByteArrayInputStream(imageString.getBytes()));
         return in;
     }
 
+    //adds text to the four buttons on the screen, making sure that one is the
+    //proper answer, and the other three are randomly selected
     private void setButtons(){
         ArrayList<String> usedButtonNames = new ArrayList<>();
         buttonNames.clear();
@@ -135,6 +145,7 @@ public class Page3Controller implements Initializable{
         fourButton.setText(buttonNames.get(0));
     }
 
+    //returns a random country name to use as button text
     private String generateButtonNames(){
         Random rng = new Random();
         while(true){
@@ -145,6 +156,7 @@ public class Page3Controller implements Initializable{
         }
     }
 
+    //checks to see if the user got the right answer
     private void checkAnswer(String buttonText){
         if(buttonText.equalsIgnoreCase(currentCountry)){
             answerAlert("Right answer!", buttonText + " was the correct answer!");
@@ -155,6 +167,7 @@ public class Page3Controller implements Initializable{
         playGame();
     }
 
+    //the alert window that pops up after you answer
     protected void answerAlert(String title, String text)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -165,6 +178,7 @@ public class Page3Controller implements Initializable{
 
     }
 
+    //once we've used all the flags, sets the score, then loads the final screen
     private void endGame(){
         GUI.setScore(score);
         GUI.setMaxScore(flags.size());

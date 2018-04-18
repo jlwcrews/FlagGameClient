@@ -9,6 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+//handles the connection to the game server
 public class FlagNetClient {
     private ObjectOutputStream output;
     private ObjectInputStream input;
@@ -60,6 +61,7 @@ public class FlagNetClient {
         }
     }
 
+    //read the serialized ArrayList<Flag> from the server
     private void getFlags() throws IOException{
         try{
             flags = (ArrayList<Flag>) input.readObject();

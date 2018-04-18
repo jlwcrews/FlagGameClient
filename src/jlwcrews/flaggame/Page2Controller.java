@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+//controller for page 2
 public class Page2Controller implements Initializable{
 
     @FXML
@@ -56,6 +57,7 @@ public class Page2Controller implements Initializable{
             difficultySelected = "hard";
     }
 
+    //launches page 3
     public void startGame(ActionEvent event) throws IOException{
         GUI.setDifficulty(difficultySelected);
         FXMLLoader loader = new FXMLLoader();

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//controller for page 4
 public class Page4Controller implements Initializable{
 
     @FXML
@@ -39,13 +40,14 @@ public class Page4Controller implements Initializable{
     @FXML
     private Label scoreLabel;
 
-
+    //displays the username, score, max score, and chosen difficulty
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        scoreLabel.setText("You scored " + GUI.getScore() + " out of a possible " + GUI.getMaxScore() + " on "
+        scoreLabel.setText(GUI.getUsername() + ", you scored " + GUI.getScore() + " out of a possible " + GUI.getMaxScore() + " on "
                 + GUI.getDifficulty() + "!");
     }
 
+    //if the player chooses to play again, resets global variables and loads the first scene again
     private void startNewGame() {
         GUI.setDifficulty(null);
         GUI.setMaxScore(0);
