@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jlwcrews.flaggame.Page4Controller">
+<AnchorPane fx:id="anchorPane" style="-fx-background-color: #a2a2a2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jlwcrews.flaggame.Page4Controller">
    <children>
-      <Pane prefHeight="199.0" prefWidth="600.0">
+      <Pane prefHeight="199.0" prefWidth="600.0" style="-fx-background-color: #a2a2a2;">
          <children>
             <Label layoutX="174.0" layoutY="30.0" text="Game Over!">
                <font>

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gridPane" alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jlwcrews.flaggame.Page1Controller">
+<GridPane fx:id="gridPane" alignment="center" hgap="10" style="-fx-background-color: #a2a2a2;" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jlwcrews.flaggame.Page1Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -27,11 +27,11 @@
                   <Font name="Droid Sans" size="48.0" />
                </font>
             </Label>
-            <TextField fx:id="nameTextField" layoutX="224.0" layoutY="382.0" onAction="#textFieldOnEnter" prefHeight="25.0" prefWidth="189.0" promptText="Enter Name" />
             <Label fx:id="nameLabel" layoutX="110.0" layoutY="386.0" prefHeight="17.0" prefWidth="114.0" text="What is your name?" />
-            <Button fx:id="continueButton" layoutX="274.0" layoutY="453.0" mnemonicParsing="false" onAction="#continueButtonClicked" text="Continue" />
+            <TextField fx:id="nameTextField" layoutX="224.0" layoutY="382.0" onAction="#textFieldOnEnter" prefHeight="25.0" prefWidth="189.0" promptText="Enter Name" />
             <Label fx:id="ipLabel" layoutX="56.0" layoutY="418.0" prefHeight="17.0" prefWidth="158.0" text="What is the server IP address?" />
             <TextField fx:id="ipTextField" layoutX="224.0" layoutY="414.0" onAction="#continueButtonClicked" prefHeight="25.0" prefWidth="189.0" promptText="IP address or URL" />
+            <Button fx:id="continueButton" layoutX="274.0" layoutY="453.0" mnemonicParsing="false" onAction="#continueButtonClicked" text="Continue" />
          </children>
       </Pane>
    </children>
